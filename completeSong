@@ -1,0 +1,32 @@
+    def completeSong(self):
+        # pseudocode:
+        # index
+        # if index is legal and song is required:
+        #	complete(song)
+        if self.songsRequired == 0:
+            print("No more songs to learn!")
+            return
+
+        index = None
+        while True:
+            index = input("Enter the number of a song to mark as learned:\n")
+            if not index:
+                print("Input can not be blank")
+            try:
+                index = int(index)
+                if index < 0:
+                    print("Number must be >= 0")
+                elif index >= len(self.songList):
+                    print("Number is out of range, there are only %d songs" % (len(self.songList)))
+                else:
+                    break
+            except ValueError:
+                print("Invalid input; enter a valid number")
+        song = self.songList[index]
+        if not song.isRequired():
+            print("%s by %s (%d) has been learned" % (song.getTitle(), song.getArtist(), song.getYear()))
+        else:
+            song.complete()
+            self.songsRequired -= 1
+            self.songsLearned += 1
+            print("%s by %s (%d) learned" % (song.getTitle(), song.getArtist(), song.getYear()))
