@@ -1,0 +1,32 @@
+    def loadSongs(self, filename):
+
+        # pseudocode
+        # open file:
+        #	for each line in file:
+        #		line=line.split("")
+        #		title=line[0]
+        #		artist=line[1]
+        #		year=line[2]
+        #		required=line[3]
+        #		song=Song(title, artist, year, required)
+        #		songList.add(song)
+        #		sort(song)
+        number = 0
+        with open(filename) as file:
+            for line in file:
+                if line:
+                    line = line.replace("\n", "")
+                    data = line.split(",")
+                    title = data[0]
+                    artist = data[1]
+                    year = int(data[2])
+                    required = data[3]
+                    song = Song(title, artist, year, required)
+                    self.songList.append(song)
+                    number += 1
+                    if song.isRequired():
+                        self.songsRequired += 1
+                    else:
+                        self.songsLearned += 1
+        self.songList = sorted(self.songList, key=lambda song: (song.artist, song.title))
+        print(number, "songs loaded")
