@@ -1,0 +1,31 @@
+class Song:
+    def __init__(self, title, artist, year, required):
+        # constructor for song
+        self.title = title
+        self.artist = artist
+        self.year = year
+        self.required = required
+
+    def getTitle(self):
+        # get title
+        return self.title
+
+    def getArtist(self):
+        # get artist
+        return self.artist
+
+    def getYear(self):
+        # get year
+        return self.year
+
+    def getRequired(self):
+        # get required
+        return self.required
+
+    def isRequired(self):
+        # check if is required
+        return self.required == 'y'
+
+    def complete(self):
+        # ccomplete the song
+        self.required = 'n'
