@@ -1,0 +1,35 @@
+    def addSong(self):
+        # add song
+        title = ""
+        while True:
+            title = input("Title:\n")
+            if not title:
+                print("Input can not be blank")
+            else:
+                break
+        artist = ""
+        while True:
+            artist = input("Artist:\n")
+            if not artist:
+                print("Input can not be blank")
+            else:
+                break
+        year = None
+        while True:
+            year = input("Year:\n")
+            if not year:
+                print("Input can not be blank")
+            try:
+                year = int(year)
+                if year < 0:
+                    print("Number must be >= 0")
+                else:
+                    break
+            except ValueError:
+                print("Invalid input; enter a valid number")
+
+        required = 'y'
+        song = Song(title, artist, year, required)
+        self.songList.append(song)
+        self.songList = sorted(self.songList, key=lambda song: (song.artist, song.title))
+        print("%s by %s (%d) added to song list" % (title, artist, year))
