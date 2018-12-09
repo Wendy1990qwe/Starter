@@ -1,0 +1,20 @@
+    SongList:
+    def __init__(self):
+        # constrcutor for songlist
+        self.songList = []
+        self.songsRequired = 0
+        self.songsLearned = 0
+        
+        
+           def listSongs(self):
+        # list songs
+        for i in range(len(self.songList)):
+            song = self.songList[i]
+            required = ""
+            title = song.getTitle()
+            artist = song.getArtist()
+            year = song.getYear()
+            if song.isRequired():
+                required = "*"
+            print("%d. %-1Ls %-30s - %-25s (%d)" % (i, required, title, artist, year))
+        print("%d songs learned, %d songs still to learn" % (self.songsLearned, self.songsRequired))
